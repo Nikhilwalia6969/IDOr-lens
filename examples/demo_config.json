@@ -1,0 +1,12 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "requests_per_second": 1,
+  "accounts": [
+    {"name": "alice", "headers_from_env": {"Authorization": "IDOR_ALICE_AUTH"}},
+    {"name": "bob", "headers_from_env": {"Authorization": "IDOR_BOB_AUTH"}}
+  ],
+  "cases": [
+    {"path": "/vulnerable/orders/{id}", "id_pointer": "/id", "objects": {"alice": "101", "bob": "202"}},
+    {"path": "/secure/orders/{id}", "id_pointer": "/id", "objects": {"alice": "101", "bob": "202"}}
+  ]
+}
